@@ -19,31 +19,42 @@ public class Main {
                     System.out.println("What is the x of the tile do you want to mark? (1-3)");
                     try {
                         playerX = userScan.nextInt() - 1;
-                    } catch (InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
                         userScan.nextLine();
                     }
                 }
                 while(playerY != 0 && playerY != 1 && playerY != 2) {
-                    System.out.println("What is the Y of the tile do you want to mark? (1-3)");
+                    System.out.println("What is the y of the tile do you want to mark? (1-3)");
                     try {
                         playerY = userScan.nextInt() - 1;
-                    } catch (InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         System.out.println("Please enter a number");
                         userScan.nextLine();
                     }
                 }
                 board.setTile(playerX, playerY, curPlayer);
-                board.checkWin();
+
+                if(board.getHandshake() == false) {
+                    playerX = -1;
+                    playerY = -1;
+                }
             }
-            board.setHandshake(false);
+            board.checkWin();
             board.printBoard();
+
+            //Reset values
+            playerX = -1;
+            playerY = -1;
+            board.setHandshake(false);
+
             if(curPlayer == 1) {
                 curPlayer = 2;
             } else {
                 curPlayer = 1;
             }
         }
+
         if(curPlayer == 1) {
             System.out.println("The winner is player 2");
         } else if(curPlayer == 2) {
@@ -51,4 +62,3 @@ public class Main {
         }
     }
 }
-

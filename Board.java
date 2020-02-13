@@ -4,8 +4,6 @@ public class Board {
     private int[][] board = new int[3][3];
     private boolean handshake = false;
     private boolean playerWon = false;
-    private boolean validX = false;
-    private boolean validY = false;
 
     public void setTile(int x, int y, int condition) {
         if(board[y][x] != 1 && board[y][x] != 2) {
@@ -36,7 +34,6 @@ public class Board {
         for(int i = 0; i < board[0].length; i++) {
             // Checking for row win
             testCase = condenseRC(i, "row");
-            //System.out.println(testCase);
             if(testCase.equals("111") || testCase.equals("222")) {
                 playerWon = true;
             }

@@ -8,13 +8,13 @@ public class Main {
         int playerX = -1;
         int playerY = -1;
         Scanner userScan = new Scanner(System.in);
-        Board board = new Board();
+        Board mainBoard = new Board();
 
-        board.printBoard();
+        mainBoard.printBoard();
 
-        while(board.getPlayerWon() == false) {
+        while(mainBoard.getPlayerWon() == false) {
             System.out.println("It is player " + curPlayer + "'s turn");
-            while(board.getHandshake() == false) {
+            while(mainBoard.getHandshake() == false) {
                 while(playerX != 0 && playerX != 1 && playerX != 2) {
                     System.out.println("What is the x of the tile do you want to mark? (1-3)");
                     try {
@@ -33,20 +33,20 @@ public class Main {
                         userScan.nextLine();
                     }
                 }
-                board.setTile(playerX, playerY, curPlayer);
+                mainBoard.setTile(playerX, playerY, curPlayer);
 
-                if(board.getHandshake() == false) {
+                if(mainBoard.getHandshake() == false) {
                     playerX = -1;
                     playerY = -1;
                 }
             }
-            board.checkWin();
-            board.printBoard();
+            mainBoard.checkWin();
+            mainBoard.printBoard();
 
             //Reset values
             playerX = -1;
             playerY = -1;
-            board.setHandshake(false);
+            mainBoard.setHandshake(false);
 
             if(curPlayer == 1) {
                 curPlayer = 2;
